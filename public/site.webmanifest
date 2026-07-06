@@ -1,0 +1,21 @@
+{
+  "name": "Previsão do Tempo",
+  "short_name": "Previsão",
+  "description": "Consulte a previsão do tempo em tempo real de qualquer cidade.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0c1024",
+  "theme_color": "#0c1024",
+  "icons": [
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
