@@ -86,7 +86,10 @@ export default function App() {
         )
       )}
 
-      <footer className="footer">Dados fornecidos por Open-Meteo</footer>
+      <footer className="footer">
+        <p>Dados fornecidos por Open-Meteo</p>
+        <p className="footer-copyright">© 2026 Gabriel Teramae Chan. Todos os direitos reservados.</p>
+      </footer>
     </div>
   );
 }
