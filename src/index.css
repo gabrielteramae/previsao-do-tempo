@@ -400,6 +400,11 @@ body {
   border-top: 1px solid var(--borda);
 }
 
+.footer-copyright {
+  margin-top: 6px;
+  opacity: 0.7;
+}
+
 @media (max-width: 640px) {
   .hero-temp {
     font-size: 76px;
