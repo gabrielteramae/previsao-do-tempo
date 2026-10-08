@@ -11,6 +11,8 @@ export default function App() {
   const [error, setError] = useState(null);
 
   async function fetchWeather(city) {
+    const requestId = (fetchWeather.requestId || 0) + 1;
+    fetchWeather.requestId = requestId;
     setLoading(true);
     setError(null);
     try {
@@ -37,6 +39,14 @@ export default function App() {
           `&timezone=auto&forecast_days=8`
       );
       const forecastData = await forecastRes.json();
+      if (!forecastRes.ok || !forecastData.current || !forecastData.daily) {
+        if (requestId === fetchWeather.requestId) {
+          setError("Não foi possível obter a previsão");
+          setData(null);
+        }
+        return;
+      }
+      if (requestId !== fetchWeather.requestId) return;
 
       setData({
         location: { name, region: admin1 || "", country },
@@ -45,10 +55,11 @@ export default function App() {
         daily: forecastData.daily,
       });
     } catch (err) {
+      if (requestId !== fetchWeather.requestId) return;
       setError("Não foi possível conectar à API de clima");
       setData(null);
     } finally {
-      setLoading(false);
+      if (requestId === fetchWeather.requestId) setLoading(false);
     }
   }
 
