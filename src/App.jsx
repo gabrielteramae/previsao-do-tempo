@@ -23,9 +23,11 @@ export default function App() {
       );
       const geoData = await geoRes.json();
 
-      if (!geoData.results || geoData.results.length === 0) {
-        setError("Cidade não encontrada");
-        setData(null);
+      if (!geoRes.ok || !geoData.results || geoData.results.length === 0) {
+        if (requestId === fetchWeather.requestId) {
+          setError(geoRes.ok ? "Cidade não encontrada" : "Não foi possível buscar a cidade");
+          setData(null);
+        }
         return;
       }
 
